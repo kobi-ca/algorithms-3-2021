@@ -8,7 +8,12 @@ def third_last_vowel():
     filtered = filter(lambda x: x in vowels, reversed(input_str))
     index = 2  # 0, 1, 2
     # iterator slice, returns iterator
-    # Need None to have the
+    # Need None to pick the right overload. see here:
+    # https://docs.python.org/3/library/itertools.html#itertools.islice
+    # itertools.islice(iterable, stop)
+    # itertools.islice(iterable, start, stop[, step])
+    # it returns iter, and we call next just once.
+    # so we dont care about "stop"
     v = next(islice(filtered, index, None))
     print(f"{v}")
 
